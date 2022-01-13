@@ -1,5 +1,7 @@
 package com.assignment.cabbookingapp.Repository;
 
+import com.assignment.cabbookingapp.Exceptions.DriverAlreadyExistsException;
+import com.assignment.cabbookingapp.Exceptions.DriverNotFoundException;
 import com.assignment.cabbookingapp.Model.Cab;
 import com.assignment.cabbookingapp.Model.Location;
 import com.assignment.cabbookingapp.Model.Driver;
@@ -14,7 +16,7 @@ public class DriverRepository {
 
     public Driver add_driver(Driver driver, Cab cab, Location location) {
         if(drivers.containsKey(driver.getName())) {
-            return null;
+            throw new DriverAlreadyExistsException();
         }
         driver.setCab(cab);
         driver.setLocation(location);
@@ -24,14 +26,14 @@ public class DriverRepository {
 
     public Driver getDriver(String driverName) {
         if(!drivers.containsKey(driverName))
-            return null;
+            throw new DriverNotFoundException();
 
         return drivers.get(driverName);
     }
 
     public Driver updateLocation(String driverName, Location location) {
         if(!drivers.containsKey(driverName)) {
-            return null;
+            throw new DriverNotFoundException();
         }
         drivers.get(driverName).setLocation(location);
         return drivers.get(driverName);
@@ -39,7 +41,7 @@ public class DriverRepository {
 
     public Driver change_driver_status(String driverName, Boolean status) {
         if(!drivers.containsKey(driverName)) {
-            return null;
+            throw new DriverNotFoundException();
         }
         drivers.get(driverName).setAvailable(status);
         return drivers.get(driverName);
