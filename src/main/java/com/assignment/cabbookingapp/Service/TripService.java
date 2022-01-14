@@ -61,8 +61,4 @@ public class TripService {
         return billAmount;
     }
 
-    public List<Trip> tripHistory(User user) {
-        return trips.get(user.getName());
-    }
-
 }
