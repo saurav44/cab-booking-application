@@ -26,7 +26,7 @@ public class UserController {
 
     @GetMapping("/user")
     public User get_user(String username) {
-        return userService.get_user(username);
+        return userService.getUser(username);
     }
 
     @PutMapping("/user/update/details")

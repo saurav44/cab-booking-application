@@ -16,7 +16,7 @@ public class UserService {
         return userRepository.add_user(user);
     }
 
-    public User get_user(String username) { return userRepository.getUser(username); }
+    public User getUser(String username) { return userRepository.getUser(username); }
 
     public User update_user(String username, String phone) {
         return userRepository.update_user(username, phone);
@@ -26,7 +26,4 @@ public class UserService {
         return userRepository.updateLocation(username, location);
     }
 
-    public User getUser(String username) {
-        return userRepository.getUser(username);
-    }
 }
